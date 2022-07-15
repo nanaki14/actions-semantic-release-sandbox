@@ -1,0 +1,8 @@
+{
+  "name": "actions-semantic-release-sandbox",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:nanaki14/actions-semantic-release-sandbox.git",
+  "author": "nanaki14",
+  "license": "MIT"
+}
