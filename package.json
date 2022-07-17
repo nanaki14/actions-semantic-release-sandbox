@@ -5,10 +5,14 @@
   "repository": "git@github.com:nanaki14/actions-semantic-release-sandbox.git",
   "author": "nanaki14",
   "license": "MIT",
+  "scripts": {
+    "prepare": "husky install",
+    "commit-msg": "commitlint -e $GIT_PARAMS"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
-    "husky": "^8.0.1",
+    "husky": "^8.0.0",
     "semantic-release": "^19.0.3",
     "typescript": "^4.7.4"
   },
@@ -26,10 +30,5 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }
