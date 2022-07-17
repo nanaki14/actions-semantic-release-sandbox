@@ -21,8 +21,8 @@ jobs:
         run: |
           PREVIOUS_TAG=$(git tag --sort=-creatordate | sed -n 1p)
           echo "PREVIOUS_TAG: $PREVIOUS_TAG"
-          COMMIT_SUMMARY="$(git log --oneline --pretty=tformat:"%h %s" $PREVIOUS_TAG..HEAD | grep 'Merge' | awk '{print $5}') "
-          COMMIT_SUMMARY="${COMMIT_SUMMARY//$'\n'/'%0A' | sed -e '1d' $grep_result}"
+          COMMIT_SUMMARY="$(git log --oneline --pretty=tformat:"%h %s" $PREVIOUS_TAG..HEAD | grep 'Merge' | awk '{print $5}' | sed -e '1d' $grep_result) "
+          COMMIT_SUMMARY="${COMMIT_SUMMARY//$'\n'/'%0A'}"
           echo ::set-output name=COMMIT_SUMMARY::$COMMIT_SUMMARY
 
       - name: Bump version and push tag
