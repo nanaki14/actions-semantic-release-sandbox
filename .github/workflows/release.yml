@@ -21,7 +21,7 @@ jobs:
         run: |
           PREVIOUS_TAG=$(git tag --sort=-creatordate | sed -n 1p)
           echo "PREVIOUS_TAG: $PREVIOUS_TAG"
-          COMMIT_SUMMARY="$(git log --oneline --pretty=tformat:"%h %s" $PREVIOUS_TAG..HEAD | grep 'Merge' | awk '{print $5}' | sed -e '1d' $grep_result) "
+          COMMIT_SUMMARY="$(git log --oneline --pretty=tformat:"%h %s %b" --pretty $PREVIOUS_TAG..HEAD | awk '{for(i=8;i<NF;i++) {printf("%s%s",$i,OFS=" ")} print $NF,$5}' | sed -e '1d' $grep_result) "
           COMMIT_SUMMARY="${COMMIT_SUMMARY//$'\n'/'%0A'}"
           echo ::set-output name=COMMIT_SUMMARY::$COMMIT_SUMMARY
 
